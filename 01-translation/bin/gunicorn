@@ -1,4 +1,4 @@
-#!/Users/gustavo/Desktop/01-translate/01-translation/bin/python3.12
+#!/Users/gustavo/Desktop/01-translate/01-translation/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
