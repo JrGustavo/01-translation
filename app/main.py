@@ -1,8 +1,14 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
 
+from fastapi.templating import Jinja2Templates
+import schemas
+import crud
+import models
+from database import get_db, engine 
+
+models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 # Configuración para permitir CORS (si es necesario)
@@ -25,8 +31,9 @@ async def index(request: Request):
 @app.post("/translate", response_model=schemas.TaskResponse)
 def translate(request: schemas.TranslationRequest):
 
-    #Pseudo
-    task = crud.create_translation_task(x, y, p )
-    background_task.add_task(perfom_translation, task.id, request.text,request.languages, db)
+    #pseudo
+    task = crud.create_translation_task(get_db.db, request.text, request.languages)
+
+    background_tasks.add_task(perfom_translation, task.id, request.text, request.languages, get_db.db)
 
     return {"task_id": {task.id}}

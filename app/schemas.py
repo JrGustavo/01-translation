@@ -8,9 +8,7 @@ class TranslationRequest(BaseModel):
 class TaskResponse(BaseModel):
     task_id: int
     
-class TranslationStatus(BaseModel)   :
+class TranslationStatus(BaseModel):
     task_id: int
     status: str
     translations: Dict[str, str]
-    
-    
